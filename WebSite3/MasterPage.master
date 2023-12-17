@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Shoes Shop</title>
+    
+   <style>
+       
+     .logo {
+        display: inline-block;
+        font-size: 30px;
+        position: relative;
+        text-align:center;
+        font-family:Arial;
+    }
+
+    .animated-text {
+        display: inline-block;
+        opacity: 0;
+    }
+
+    #shoes {
+        animation: slideFromLeft 2s forwards;
+        animation-delay: 0s; /* Start immediately */
+    }
+
+    #shop {
+        animation: slideFromRight 2s forwards;
+        animation-delay: 0s; /* Start immediately */
+  
+    }
+
+    
+    .underline {
+        position: absolute;
+        bottom: 0;
+        center: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ffc107; /* Change the color as needed */
+        animation: underlineFadeIn 2s forwards;
+        animation-delay: 4s; /* Start after the text animations (4 seconds delay) */
+    }
+
+    @keyframes slideFromLeft {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideFromRight {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes underlineFadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Animation loop every 10 seconds */
+    .logo {
+        animation: logoAnimationLoop 10s infinite;
+    }
+
+    @keyframes logoAnimationLoop {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        25% {
+            transform: translateY(-10px);
+        }
+        75% {
+            transform: translateY(10px);
+        }
+    }
+    /* Base styles for the label, logo, and menu */
+    .site-label {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .site-logo {
+        max-width: 100px; /* Set the max width as needed */
+        height: auto;
+    }
+
+    .menu 
+    {
+         width:100%;
+        background-color:#333; /* Navbar background color */
+        color: white;
+    }
+
+    .menu-link {
+        color: white; /* Link text color */
+        text-decoration: none; /* Remove underline from links */
+        padding: 10px 15px; /* Adjust padding as needed */
+        display: inline-block;
+        font-size:23px;
+        font-family:Arial;
+    }
+
+    /* Hover effect for menu links */
+    .menu-link:hover {
+        background-color: #ffc107; /* Background color on hover */
+        color: #333; /* Text color on hover */
+    }
+   .navbar {
+            
+            width:100%;
+            }
+            .copyright {
+        font-size: 16px;
+        color: #777;
+        margin-top: auto; /* Add some space above the text */
+        text-align:center;
+    }
+    .menu-link-ad
+    {
+        color:Black;
+         text-decoration: none; /* Remove underline from links */
+        padding: 10px 15px; /* Adjust padding as needed */
+        display: inline-block;
+        font-size:23px;
+        font-family:Arial;
+
+        }
+         .menu-link-ad:hover {
+        background-color: #ffc107; /* Background color on hover */
+        color: white; /* Text color on hover */
+    }
+    footer
+    {
+           margin-bottom:auto;
+        
+        }
+     
+</style>
+
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+   
+              <table class="navbar">
+    <tr>
+        <td>
+            <table class="logo">
+                <tr>
+                    <td>
+                       <div class="logo">
+    <span id="shoes" class="animated-text">Shoes</span>
+    <span id="shop" class="animated-text">Shop</span>
+</div>
+
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            
+            <table class="menu">
+                <tr>
+                    <td>
+                        <asp:Image ID="Image1" runat="server" CssClass="site-logo" ImageUrl="image/logo.jpg" />
+                    </td>
+                    <td>
+                        <a href="home.aspx" class="menu-link">Home</a>
+                    </td>
+                    <td>
+                        <a href="shop.aspx" class="menu-link">Shop</a>
+                    </td>
+                    <td>
+                        <a href="Login.aspx" class="menu-link">Login</a>
+                    </td>
+                    <td>
+                        <a href="Register.aspx" class="menu-link">Register</a>
+                    </td>
+                    <td>
+                        <a href="orderdetail.aspx" class="menu-link">Profile</a>
+                    </td>
+                    <td>
+                        <a href="cart.aspx" class="menu-link">Add to Cart</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+        </header>
+        <div class="container">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+        <hr>
+         <h3 class="copyright">© Shoes Shop INDIA LTD, 2023. ALL RIGHTS RESERVED    <a href="admin.aspx" class="menu-link-ad">Admin</a></h3>
+         <hr>
+        </footer>
+    </form>
+    
+</body>
+</html>
